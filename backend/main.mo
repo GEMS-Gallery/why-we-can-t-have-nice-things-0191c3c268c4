@@ -64,4 +64,36 @@ actor {
     galleryImages := Array.append(galleryImages, [image]);
     id
   };
+
+  private func initializeGallery() {
+    let examples = [
+      ("https://example.com/image1.jpg", "Because we always lose one sock in the laundry"),
+      ("https://example.com/image2.jpg", "Because hot coffee always spills on important documents"),
+      ("https://example.com/image3.jpg", "Because our phones always die at the most inconvenient times"),
+      ("https://example.com/image4.jpg", "Because we can never find the TV remote when we need it"),
+      ("https://example.com/image5.jpg", "Because our favorite snacks are always out of stock"),
+    ];
+
+    var id = nextImageId;
+    for ((url, description) in examples.vals()) {
+      let image: Image = {
+        id = id;
+        url = url;
+        description = description;
+      };
+      galleryImages := Array.append(galleryImages, [image]);
+      id += 1;
+    };
+    nextImageId := id;
+  };
+
+  system func preupgrade() {
+    // Preserve state before upgrade
+  };
+
+  system func postupgrade() {
+    if (galleryImages.size() == 0) {
+      initializeGallery();
+    };
+  };
 }
