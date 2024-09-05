@@ -10,10 +10,10 @@ export const idlFactory = ({ IDL }) => {
   const Image = IDL.Record({
     'id' : IDL.Nat,
     'url' : IDL.Text,
-    'description' : IDL.Opt(IDL.Text),
+    'description' : IDL.Text,
   });
   return IDL.Service({
-    'addGalleryImage' : IDL.Func([IDL.Text, IDL.Opt(IDL.Text)], [IDL.Nat], []),
+    'addGalleryImage' : IDL.Func([IDL.Text, IDL.Text], [IDL.Nat], []),
     'createBlogPost' : IDL.Func([IDL.Text, IDL.Text], [IDL.Nat], []),
     'getBlogPost' : IDL.Func([IDL.Nat], [Result], ['query']),
     'getBlogPosts' : IDL.Func([], [IDL.Vec(BlogPost)], ['query']),

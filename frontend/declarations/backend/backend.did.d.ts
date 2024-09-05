@@ -8,16 +8,12 @@ export interface BlogPost {
   'content' : string,
   'timestamp' : Time,
 }
-export interface Image {
-  'id' : bigint,
-  'url' : string,
-  'description' : [] | [string],
-}
+export interface Image { 'id' : bigint, 'url' : string, 'description' : string }
 export type Result = { 'ok' : BlogPost } |
   { 'err' : string };
 export type Time = bigint;
 export interface _SERVICE {
-  'addGalleryImage' : ActorMethod<[string, [] | [string]], bigint>,
+  'addGalleryImage' : ActorMethod<[string, string], bigint>,
   'createBlogPost' : ActorMethod<[string, string], bigint>,
   'getBlogPost' : ActorMethod<[bigint], Result>,
   'getBlogPosts' : ActorMethod<[], Array<BlogPost>>,

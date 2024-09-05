@@ -40,7 +40,12 @@ function App() {
       </AppBar>
       <Container maxWidth="lg" sx={{ mt: 4 }}>
         <Routes>
-          <Route path="/" element={<><BlogList /><Gallery /></>} />
+          <Route path="/" element={<>
+            <Typography variant="h4" gutterBottom>Why We Can't Have Nice Things</Typography>
+            <BlogList />
+            <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>Gallery of Reasons</Typography>
+            <Gallery />
+          </>} />
           <Route path="/post/:id" element={<BlogPost />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>

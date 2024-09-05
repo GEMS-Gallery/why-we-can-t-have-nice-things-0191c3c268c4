@@ -18,8 +18,8 @@ const AdminPage: React.FC = () => {
     setLoading(true);
     try {
       await backend.createBlogPost(data.title, data.content);
-      if (data.imageUrl) {
-        await backend.addGalleryImage(data.imageUrl, data.imageDescription ? [data.imageDescription] : []);
+      if (data.imageUrl && data.imageDescription) {
+        await backend.addGalleryImage(data.imageUrl, data.imageDescription);
       }
       reset();
       alert('Blog post and image added successfully!');
@@ -91,7 +91,7 @@ const AdminPage: React.FC = () => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Image Description"
+              label="Reason Why We Can't Have Nice Things"
               fullWidth
               margin="normal"
             />

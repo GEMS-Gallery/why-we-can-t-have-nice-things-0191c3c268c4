@@ -17,7 +17,7 @@ actor {
   type Image = {
     id: Nat;
     url: Text;
-    description: ?Text;
+    description: Text;
   };
 
   stable var nextPostId: Nat = 0;
@@ -53,7 +53,7 @@ actor {
     galleryImages
   };
 
-  public func addGalleryImage(url: Text, description: ?Text): async Nat {
+  public func addGalleryImage(url: Text, description: Text): async Nat {
     let id = nextImageId;
     nextImageId += 1;
     let image: Image = {
